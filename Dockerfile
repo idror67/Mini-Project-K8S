@@ -1,10 +1,10 @@
-FROM python:3.9-slim
-
+# Use the official Python image from the DockerHub
+FROM python:3.12-slim
+# Set the working directory in the container
 WORKDIR /app
-
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
-COPY . .
-
-CMD ["python", "app.py"]
+# Copy the rest of the application code into the container
+COPY flask-contact-idror/ /app/
+# Install the dependencies
+RUN pip install --no-cache-dir -r /app/requirements.txt
+# Set the entrypoint to wait for MySQL and run the app
+ENTRYPOINT ["python", "app.py"]
