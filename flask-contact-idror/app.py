@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+from prometheus_flask_exporter import PrometheusMetrics
 from dotenv import load_dotenv
 import os
 load_dotenv()
@@ -19,6 +20,8 @@ elif db_to_use == "MONGO":
                             delete_contact, update_contact_in_db)
 
 app = Flask(__name__)
+# Initialize Prometheus Metrics
+metrics = PrometheusMetrics(app)
 
 
 
