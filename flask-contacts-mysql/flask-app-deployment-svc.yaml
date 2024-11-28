@@ -16,7 +16,7 @@ spec:
     spec: # container specs
       containers:
         - name: flask-app
-          image: idrori/flask-contacts-appid:latest
+          image: idror/flask-contacts-appid:latest
           ports:
             - containerPort: 5052
           env:
@@ -36,21 +36,20 @@ spec:
         - name: flask-app-images
           persistentVolumeClaim:
             claimName: flask-app-images
-            
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
- name: flask-contacts-app-service
+  name: flask-contacts-app-service
   labels:
     app: flask-contact-service
 spec:
- selector:
-   app: flask-contacts-app
- type: LoadBalancer # external service which can be accessed from outside the cluster
- ports:
-   - name: flask-contacts-service
-     protocol: TCP
-     port: 5052
-     targetPort: 5052   
+  selector:
+    app: flask-contacts-app
+  type: LoadBalancer # external service which can be accessed from outside the cluster
+  ports:
+    - name: flask-contacts-service
+      protocol: TCP
+      port: 5053
+      targetPort: 5052
