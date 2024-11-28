@@ -20,6 +20,7 @@ elif db_to_use == "MONGO":
                             delete_contact, update_contact_in_db)
 
 app = Flask(__name__)
+
 # Initialize Prometheus Metrics
 metrics = PrometheusMetrics(app)
 
