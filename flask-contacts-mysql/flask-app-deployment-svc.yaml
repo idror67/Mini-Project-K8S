@@ -16,7 +16,7 @@ spec:
     spec: # container specs
       containers:
         - name: flask-app
-          image: shashkist/flask-contacts-app:1.4
+          image: idrori/flask-contacts-appid:latest
           ports:
             - containerPort: 5052
           env:
@@ -43,9 +43,11 @@ apiVersion: v1
 kind: Service
 metadata:
  name: flask-app-service
+  labels:
+    app: flask-contact-service
 spec:
  selector:
-   app: flask-app
+   app: flask-contacts-app
  type: LoadBalancer # external service which can be accessed from outside the cluster
  ports:
    - protocol: TCP
