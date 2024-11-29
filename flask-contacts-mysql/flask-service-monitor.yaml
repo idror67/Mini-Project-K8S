@@ -3,8 +3,7 @@ kind: ServiceMonitor
 metadata:
   name: flask-service-monitor
   labels:
-    #app: flsk-contact-service
-    release: prometheus
+    release: prometheus # Ensure Prometheus is set up with this release label
 spec:
   endpoints:
   - interval: 30s
@@ -12,4 +11,4 @@ spec:
     scrapeTimeout: 10s
   selector:
     matchLabels:
-      app: flask-contacs-service        
+      app: flask-app # Match the labels in the Service
