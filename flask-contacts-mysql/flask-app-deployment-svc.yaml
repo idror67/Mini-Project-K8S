@@ -53,19 +53,3 @@ spec:
       protocol: TCP
       port: 5053
       targetPort: 5052
-
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: flask-service-monitor
-  labels:
-    release: prometheus
-spec:
-  endpoints:
-  - interval: 30s
-    port: flask-contacts-service
-    scrapeTimeout: 10s
-  selector:
-    matchLabels:
-      app: flask-contact-service
