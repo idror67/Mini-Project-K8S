@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "idror-flsk-contacts.fullname" . }}
+  labels:
+    {{- include "idror-flsk-contacts.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "idror-flsk-contacts.selectorLabels" . | nindent 4 }}
